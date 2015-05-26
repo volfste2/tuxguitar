@@ -109,7 +109,6 @@ public class TGTableViewer implements TGEventListener {
 		MouseListener listener = mouseFocusListener();
 		this.table = new TGTable(getComposite());
 		this.table.getColumnNumber().getControl().addMouseListener(listener);
-		this.table.getColumnSoloMute().getControl().addMouseListener(listener);
 		this.table.getColumnName().getControl().addMouseListener(listener);
 		this.table.getColumnInstrument().getControl().addMouseListener(listener);
 		this.table.getColumnCanvas().getControl().addMouseListener(listener);
@@ -128,8 +127,9 @@ public class TGTableViewer implements TGEventListener {
 	
 	public void loadProperties() {
 		this.table.getColumnNumber().setTitle(TuxGuitar.getProperty("track.number"));
-		this.table.getColumnSoloMute().setTitle(TuxGuitar.getProperty("track.short-solo-mute"));
-		this.table.getColumnName().setTitle(TuxGuitar.getProperty("track.name"));
+		this.table.getColumnSolo().setTitle("S");
+                this.table.getColumnMute().setTitle("M");
+                this.table.getColumnName().setTitle(TuxGuitar.getProperty("track.name"));
 		this.table.getColumnInstrument().setTitle(TuxGuitar.getProperty("track.instrument"));
 	}
 	
@@ -200,11 +200,14 @@ public class TGTableViewer implements TGEventListener {
 					row.getNumber().setData(track);
 					row.getNumber().setMenu(createTrackMenu());
 					
-					//Solo-Mute
-					row.getSoloMute().setText(getSoloMute(track));
-					row.getSoloMute().setData(track);
-					row.getSoloMute().setMenu(createTrackMenu());
-					
+                                        // Solo
+                                        row.getSoloCheckbox().setSelection(track.isSolo());
+                                        row.getSoloCheckbox().setData(track);
+                                        
+                                        // Mute
+                                        row.getMuteCheckbox().setSelection(track.isMute());
+                                        row.getMuteCheckbox().setData(track);
+                                        
 					//Name
 					row.getName().setText(track.getName());
 					row.getName().setData(track);
@@ -292,8 +295,9 @@ public class TGTableViewer implements TGEventListener {
 		for(int i = 0; i < rows; i ++){
 			TGTableRow row = this.table.getRow(i);
 			
-			row.getNumber().setText(Integer.toString(((TGTrack)row.getNumber().getData()).getNumber()));
-			row.getSoloMute().setText(getSoloMute((TGTrack)row.getSoloMute().getData()));
+			row.getNumber().setText(Integer.toString(((TGTrack)row.getNumber().getData()).getNumber()));		
+                        row.getSoloCheckbox().setSelection(((TGTrack)row.getSoloCheckbox().getData()).isSolo());
+                        row.getMuteCheckbox().setSelection(((TGTrack)row.getMuteCheckbox().getData()).isMute());
 			row.getName().setText(((TGTrack)row.getName().getData()).getName());
 			row.getInstrument().setText(getInstrument((TGTrack)row.getInstrument().getData()));
 		}

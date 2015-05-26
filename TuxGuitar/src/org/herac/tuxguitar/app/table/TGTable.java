@@ -17,7 +17,8 @@ public class TGTable {
 	private SashForm columnControl;
 	private Composite rowControl;
 	private TGTableColumn columnNumber;
-	private TGTableColumn columnSoloMute;
+        private TGTableColumn columnSolo;
+        private TGTableColumn columnMute;
 	private TGTableColumn columnName;
 	private TGTableColumn columnInstrument;
 	private TGTableColumn columnCanvas;
@@ -45,11 +46,12 @@ public class TGTable {
 		this.columnControl.setLayoutData(new GridData(SWT.FILL,SWT.TOP,true,false));
 		
 		this.columnNumber = new TGTableColumn(this,SWT.LEFT);
-		this.columnSoloMute = new TGTableColumn(this,SWT.LEFT);
+                this.columnSolo = new TGTableColumn(this,SWT.LEFT);
+                this.columnMute = new TGTableColumn(this,SWT.LEFT);
 		this.columnName = new TGTableColumn(this,SWT.LEFT);
 		this.columnInstrument = new TGTableColumn(this,SWT.LEFT);
 		this.columnCanvas = new TGTableColumn(this,SWT.CENTER);
-		this.columnControl.setWeights(new int[]{1,2,7,7,20});
+		this.columnControl.setWeights(new int[]{1,1,1,7,7,20});
 		
 		this.rowControl = new Composite(this.table,SWT.NONE);
 		this.rowControl.setLayout(newGridLayout(1,0,1,0,1));
@@ -115,10 +117,14 @@ public class TGTable {
 		return this.columnNumber;
 	}
 	
-	public TGTableColumn getColumnSoloMute() {
-		return this.columnSoloMute;
-	}
-	
+        public TGTableColumn getColumnSolo() {
+                return columnSolo;
+        }
+
+        public TGTableColumn getColumnMute() {
+                return columnMute;
+        }
+  
 	public TGTableColumn getColumnCanvas() {
 		return this.columnCanvas;
 	}
@@ -152,7 +158,8 @@ public class TGTable {
 	
 	private void notifyRemoved(){
 		this.columnNumber.notifyRemoved();
-		this.columnSoloMute.notifyRemoved();
+                this.columnSolo.notifyRemoved();
+                this.columnMute.notifyRemoved();
 		this.columnName.notifyRemoved();
 		this.columnInstrument.notifyRemoved();
 		this.columnCanvas.notifyRemoved();
@@ -160,7 +167,8 @@ public class TGTable {
 	
 	private void layoutColumns(){
 		this.columnNumber.layout();
-		this.columnSoloMute.layout();
+                this.columnSolo.layout();
+                this.columnMute.layout();
 		this.columnName.layout();
 		this.columnInstrument.layout();
 		this.columnCanvas.layout();
