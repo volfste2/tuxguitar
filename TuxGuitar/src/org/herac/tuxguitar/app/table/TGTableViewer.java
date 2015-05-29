@@ -128,8 +128,8 @@ public class TGTableViewer implements TGEventListener {
 	public void loadProperties() {
 		this.table.getColumnNumber().setTitle(TuxGuitar.getProperty("track.number"));
 		this.table.getColumnSolo().setTitle("S");
-                this.table.getColumnMute().setTitle("M");
-                this.table.getColumnName().setTitle(TuxGuitar.getProperty("track.name"));
+		this.table.getColumnMute().setTitle("M");
+		this.table.getColumnName().setTitle(TuxGuitar.getProperty("track.name"));
 		this.table.getColumnInstrument().setTitle(TuxGuitar.getProperty("track.instrument"));
 	}
 	
@@ -200,14 +200,14 @@ public class TGTableViewer implements TGEventListener {
 					row.getNumber().setData(track);
 					row.getNumber().setMenu(createTrackMenu());
 					
-                                        // Solo
-                                        row.getSoloCheckbox().setSelection(track.isSolo());
-                                        row.getSoloCheckbox().setData(track);
-                                        
-                                        // Mute
-                                        row.getMuteCheckbox().setSelection(track.isMute());
-                                        row.getMuteCheckbox().setData(track);
-                                        
+					// Solo
+					row.getSoloCheckbox().setSelection(track.isSolo());
+					row.getSoloCheckbox().setData(track);
+					
+					// Mute
+					row.getMuteCheckbox().setSelection(track.isMute());
+					row.getMuteCheckbox().setData(track);
+					
 					//Name
 					row.getName().setText(track.getName());
 					row.getName().setData(track);
@@ -296,8 +296,8 @@ public class TGTableViewer implements TGEventListener {
 			TGTableRow row = this.table.getRow(i);
 			
 			row.getNumber().setText(Integer.toString(((TGTrack)row.getNumber().getData()).getNumber()));		
-                        row.getSoloCheckbox().setSelection(((TGTrack)row.getSoloCheckbox().getData()).isSolo());
-                        row.getMuteCheckbox().setSelection(((TGTrack)row.getMuteCheckbox().getData()).isMute());
+			row.getSoloCheckbox().setSelection(((TGTrack)row.getSoloCheckbox().getData()).isSolo());
+			row.getMuteCheckbox().setSelection(((TGTrack)row.getMuteCheckbox().getData()).isMute());
 			row.getName().setText(((TGTrack)row.getName().getData()).getName());
 			row.getInstrument().setText(getInstrument((TGTrack)row.getInstrument().getData()));
 		}

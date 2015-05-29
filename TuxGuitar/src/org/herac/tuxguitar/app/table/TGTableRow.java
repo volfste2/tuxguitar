@@ -18,8 +18,8 @@ public class TGTableRow {
 	private TGTable table;
 	private Composite row;
 	private CLabel number;
-        private Button soloCheckbox;
-        private Button muteCheckbox;
+	private Button soloCheckbox;
+	private Button muteCheckbox;
 	private CLabel name;
 	private CLabel instrument;
 	private Composite painter;
@@ -44,16 +44,16 @@ public class TGTableRow {
 		this.number.addMouseListener(mouseListenerLabel);
 		this.table.addRowItem(this.table.getColumnNumber(),this.number,true);
 		
-                this.soloCheckbox = new Button(this.row,SWT.CHECK);
-                this.soloCheckbox.addMouseListener(mouseListenerLabel);
-                this.soloCheckbox.addSelectionListener(new TGActionProcessor(ChangeTrackSoloAction.NAME));
-                this.table.addRowItem(this.table.getColumnSolo(),this.soloCheckbox,true);
+		this.soloCheckbox = new Button(this.row,SWT.CHECK);
+		this.soloCheckbox.addMouseListener(mouseListenerLabel);
+		this.soloCheckbox.addSelectionListener(new TGActionProcessor(ChangeTrackSoloAction.NAME));
+		this.table.addRowItem(this.table.getColumnSolo(),this.soloCheckbox,true);
 
-                this.muteCheckbox = new Button(this.row,SWT.CHECK);
-                this.muteCheckbox.addMouseListener(mouseListenerLabel);
-                this.muteCheckbox.addSelectionListener(new TGActionProcessor(ChangeTrackMuteAction.NAME));
-                this.table.addRowItem(this.table.getColumnMute(),this.muteCheckbox,true);
-         
+		this.muteCheckbox = new Button(this.row,SWT.CHECK);
+		this.muteCheckbox.addMouseListener(mouseListenerLabel);
+		this.muteCheckbox.addSelectionListener(new TGActionProcessor(ChangeTrackMuteAction.NAME));
+		this.table.addRowItem(this.table.getColumnMute(),this.muteCheckbox,true);
+
 		this.name = new CLabel(this.row,SWT.LEFT);
 		this.name.addMouseListener(mouseListenerLabel);
 		this.table.addRowItem(this.table.getColumnName(),this.name,true);
@@ -72,16 +72,16 @@ public class TGTableRow {
 	
 	public void setBackground(Color background){
 		this.number.setBackground(background);
-                this.soloCheckbox.setBackground(background);
-                this.muteCheckbox.setBackground(background);
+		this.soloCheckbox.setBackground(background);
+		this.muteCheckbox.setBackground(background);
 		this.name.setBackground(background);
 		this.instrument.setBackground(background);
 	}
 	
 	public void setForeground(Color foreground){
 		this.number.setForeground(foreground);
-                this.soloCheckbox.setForeground(foreground);
-                this.muteCheckbox.setForeground(foreground);
+		this.soloCheckbox.setForeground(foreground);
+		this.muteCheckbox.setForeground(foreground);
 		this.name.setForeground(foreground);
 		this.instrument.setForeground(foreground);
 	}
@@ -106,13 +106,13 @@ public class TGTableRow {
 		return this.number;
 	}
 
-        public Button getSoloCheckbox() {
-                return soloCheckbox;
-        }
+	public Button getSoloCheckbox() {
+		return soloCheckbox;
+	}
 
-        public Button getMuteCheckbox() {
-                return muteCheckbox;
-        }
+	public Button getMuteCheckbox() {
+		return muteCheckbox;
+	}
 
 	public MouseListener getMouseListenerLabel() {
 		return this.mouseListenerLabel;
